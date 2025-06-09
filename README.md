@@ -1,20 +1,7 @@
+## Audio Synth Project
 
-# Projetos de Sistemas Embarcados - EmbarcaTech 2025
+    This project mostly consists of being able to record and play an audio through the
+    bitdoglab, making use of PWM.
 
-Autor: **Insira Seu Nome**
-
-Curso: Residência Tecnológica em Sistemas Embarcados
-
-Instituição: EmbarcaTech - HBr
-
-Campinas, ___ de 2025
-
----
-
-<!-- INSIRA O CONTEÚDO DO SEU README AQUI! -->
-
----
-
-## 📜 Licença
-GNU GPL-3.0.
-
+# Link for demonstrational video
+https://youtube.com/shorts/8k1xrdxOx68?si=ZYtua6-oVw8XMsCx

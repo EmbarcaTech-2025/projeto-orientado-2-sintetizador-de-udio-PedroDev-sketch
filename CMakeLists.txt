@@ -28,42 +28,42 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-project(synth_audio C CXX ASM)
+project(sound_synth C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable( synth_audio
-  main.c
-)
+add_executable(sound_synth app/main.c include/ssd1306.c )
 
-pico_set_program_name(synth_audio "synth_audio")
-pico_set_program_version(synth_audio "0.1")
+pico_set_program_name(sound_synth "sound_synth")
+pico_set_program_version(sound_synth "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(synth_audio 0)
-pico_enable_stdio_usb(synth_audio 1)
+pico_enable_stdio_uart(sound_synth 0)
+pico_enable_stdio_usb(sound_synth 0)
 
 # Add the standard library to the build
-target_link_libraries(synth_audio
-        # Biblioteca padrão do Pico SDK, que fornece funções básicas para o RP2040 (GPIO, temporizadores, UART, etc.).
-        pico_stdlib
-        )
+target_link_libraries(sound_synth
+        pico_stdlib)
 
 # Add the standard include files to the build
-target_include_directories(synth_audio PRIVATE
+target_include_directories(sound_synth PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
-        ${CMAKE_CURRENT_LIST_DIR}/include
 )
 
 # Add any user requested libraries
-target_link_libraries(synth_audio 
+target_link_libraries(sound_synth 
+        pico_stdlib
+        hardware_gpio
         hardware_adc
+        hardware_i2c
         hardware_dma
         hardware_pwm
-)
+        hardware_clocks
+        hardware_irq
+        )
 
-pico_add_extra_outputs(synth_audio)
+pico_add_extra_outputs(sound_synth)
 
